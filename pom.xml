@@ -5,8 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.5.2</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<version>2.7.18</version>
 	</parent>
 	<groupId>com.fancky</groupId>
 	<artifactId>shardingreadwrite</artifactId>
@@ -16,8 +15,8 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-		<shardingsphere.version>5.0.0-alpha</shardingsphere.version>
-
+		<shardingsphere.version>5.1.1</shardingsphere.version>
+		<snakeyaml.version>2.2</snakeyaml.version>
 
 	</properties>
 
@@ -27,23 +26,44 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
+			<version>8.0.33</version>
 		</dependency>
+
         <!--  mybatis-->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
 			<version>2.1.4</version>
         </dependency>
+
+
 		<!-- ShardingSphere -->
 		<dependency>
             <groupId>org.apache.shardingsphere</groupId>
             <artifactId>shardingsphere-jdbc-core-spring-boot-starter</artifactId>
-            <version>5.0.0-alpha</version>
+            <version>${shardingsphere.version}</version>
         </dependency>
+
+
+
+		<!-- https://mvnrepository.com/artifact/org.apache.shardingsphere/shardingsphere-sharding-core -->
+<!--		<dependency>-->
+<!--			<groupId>org.apache.shardingsphere</groupId>-->
+<!--			<artifactId>shardingsphere-sharding-core</artifactId>-->
+<!--			<version>5.4.1</version>-->
+<!--		</dependency>-->
+
+
+		<!-- https://mvnrepository.com/artifact/org.apache.shardingsphere/shardingsphere-jdbc -->
+<!--		<dependency>-->
+<!--			<groupId>org.apache.shardingsphere</groupId>-->
+<!--			<artifactId>shardingsphere-jdbc-core</artifactId>-->
+<!--			<version>5.4.1</version>-->
+<!--		</dependency>-->
 
 
 		<dependency>

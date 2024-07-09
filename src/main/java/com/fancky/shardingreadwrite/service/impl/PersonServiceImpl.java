@@ -3,6 +3,7 @@ package com.fancky.shardingreadwrite.service.impl;
 import com.fancky.shardingreadwrite.model.entity.*;
 import com.fancky.shardingreadwrite.dao.PersonMapper;
 import com.fancky.shardingreadwrite.service.PersonService;
+import org.apache.shardingsphere.infra.hint.HintManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +35,15 @@ public class PersonServiceImpl implements PersonService {
      */
     @Override
     public Person queryById(Integer id) {
+
+
+//        //强制路由主库
+//        try (HintManager hintManager = HintManager.getInstance();) {
+//            //setMasterRouteOnly 应该改成 setWriteRouteOnly了
+//            hintManager.setWriteRouteOnly();
+//            Person person = this.personMapper.queryById(1);
+//        }
+
         return this.personMapper.queryById(id);
     }
 

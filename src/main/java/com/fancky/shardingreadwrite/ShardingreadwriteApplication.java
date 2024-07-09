@@ -6,6 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 @SpringBootApplication
+
+//使用core
 //@SpringBootApplication(exclude= {DataSourceAutoConfiguration.class})
 //@MapperScan("com.fancky.shardingreadwrite.dao")
 public class ShardingreadwriteApplication {

@@ -8,11 +8,11 @@
         <result property="name" column="name" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <!--查询单个-->
+    <!--查询单个  demo.person 表明前不能加库前缀-->
     <select id="queryById" resultMap="BaseResultMap">
         select
           id, name
-        from demo.person
+        from person
         where id = #{id}
     </select>
 

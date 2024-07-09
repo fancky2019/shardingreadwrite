@@ -19,6 +19,18 @@ public class PersonController {
         return "";
     }
 
+
+    /**
+     * 通过mysql  查看执行的log.返发现
+     * @return
+     * @throws Exception
+     */
+    @GetMapping(value = "/query/{id}")
+    public String query(@PathVariable Integer id) throws Exception {
+        personService.queryById(id);
+        return "";
+    }
+
     /**
      * 通过mysql  查看执行的log.返发现
      * @return
