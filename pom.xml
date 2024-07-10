@@ -17,7 +17,9 @@
 		<java.version>1.8</java.version>
 		<shardingsphere.version>5.1.1</shardingsphere.version>
 		<snakeyaml.version>2.2</snakeyaml.version>
-
+		<shardingsphere-jdbc.version>5.5.0</shardingsphere-jdbc.version>
+		<shardingsphere-jdbc-core.version>5.4.1</shardingsphere-jdbc-core.version>
+		<snakeyaml.version>2.2</snakeyaml.version>
 	</properties>
 
 	<dependencies>
@@ -42,28 +44,57 @@
 
 
 		<!-- ShardingSphere -->
-		<dependency>
-            <groupId>org.apache.shardingsphere</groupId>
-            <artifactId>shardingsphere-jdbc-core-spring-boot-starter</artifactId>
-            <version>${shardingsphere.version}</version>
-        </dependency>
-
-
-
-		<!-- https://mvnrepository.com/artifact/org.apache.shardingsphere/shardingsphere-sharding-core -->
 <!--		<dependency>-->
-<!--			<groupId>org.apache.shardingsphere</groupId>-->
-<!--			<artifactId>shardingsphere-sharding-core</artifactId>-->
-<!--			<version>5.4.1</version>-->
+<!--            <groupId>org.apache.shardingsphere</groupId>-->
+<!--            <artifactId>shardingsphere-jdbc-core-spring-boot-starter</artifactId>-->
+<!--            <version>${shardingsphere.version}</version>-->
+<!--        </dependency>-->
+
+
+<!--		shardingsphere-jdbc 5.5.0  之前版本引用shardingsphere-jdbc-core-->
+		<dependency>
+			<groupId>org.apache.shardingsphere</groupId>
+			<artifactId>shardingsphere-jdbc</artifactId>
+			<version>${shardingsphere-jdbc.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.shardingsphere</groupId>
+					<artifactId>shardingsphere-test-util</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+<!--		&lt;!&ndash; https://mvnrepository.com/artifact/io.github.greycode/shardingsphere-test-util &ndash;&gt;-->
+<!--		<dependency>-->
+<!--			<groupId>io.github.greycode</groupId>-->
+<!--			<artifactId>shardingsphere-test-util</artifactId>-->
+<!--			<version>5.3.3.1</version>-->
+<!--&lt;!&ndash;			<scope>test</scope>&ndash;&gt;-->
 <!--		</dependency>-->
+
+
+<!--		<dependency>-->
+<!--			<groupId>org.yaml</groupId>-->
+<!--			<artifactId>snakeyaml</artifactId>-->
+<!--			<version>2.2</version>-->
+<!--		</dependency>-->
+
+<!--		<dependency>-->
+<!--			<groupId>org.yaml</groupId>-->
+<!--			<artifactId>snakeyaml</artifactId>-->
+<!--			<version>1.33</version>-->
+<!--		</dependency>-->
+
 
 
 		<!-- https://mvnrepository.com/artifact/org.apache.shardingsphere/shardingsphere-jdbc -->
 <!--		<dependency>-->
 <!--			<groupId>org.apache.shardingsphere</groupId>-->
 <!--			<artifactId>shardingsphere-jdbc-core</artifactId>-->
-<!--			<version>5.4.1</version>-->
+<!--&lt;!&ndash;			<version>5.4.1</version>&ndash;&gt;-->
+<!--			<version>5.3.2</version>-->
 <!--		</dependency>-->
+
 
 
 		<dependency>

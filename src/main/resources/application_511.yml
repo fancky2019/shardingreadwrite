@@ -1,0 +1,65 @@
+server:
+  port: 8087
+
+mybatis:
+  #  Mapper文件存放的位置
+  mapperLocations: classpath:mapper/*.xml
+  #  实体类所在的包
+  typeAliasesPackage: com.fancky.shardingreadwrite.model.entity
+
+spring:
+  shardingsphere:
+    # 数据源配置
+    datasource:
+      common:
+        # 数据库驱动类名
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        # 数据库连接池类名称
+        type: com.zaxxer.hikari.HikariDataSource
+      # 数据源名称，多数据源以逗号分隔
+      names: main,slave1,slave2
+      main:
+        type: com.zaxxer.hikari.HikariDataSource
+        jdbc-url: jdbc:mysql://127.0.0.1:3307/test?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+        username: root
+        password: 123456
+      slave1:
+        type: com.zaxxer.hikari.HikariDataSource
+        jdbc-url: jdbc:mysql://127.0.0.1:3308/test?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+        username: root
+        password: 123456
+      slave2:
+        type: com.zaxxer.hikari.HikariDataSource
+        jdbc-url: jdbc:mysql://127.0.0.1:3309/test?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+        username: root
+        password: 123456
+
+    rules:
+      readwrite-splitting:
+        data-sources:
+          myds:
+            # 读数据源负载均衡算法名称
+            load-balancer-name: alg_round
+            props:
+              # 读数据源名称，多个从数据源用逗号分隔
+              read-data-source-names: slave1,slave2
+              # 写数据源名称
+              write-data-source-name: main
+            # 读写分离类型，如: Static，Dynamic
+            type: Static
+        load-balancers:
+          # 定义负载均衡算法：随机，轮询，权重
+          alg_random:
+            type: RANDOM
+          alg_round:
+            type: ROUND_ROBIN
+          alg_weight:
+            props:
+              slave1: 1
+              slave2: 2
+            type: WEIGHT
+
+    # 属性配置
+    props:
+      # 展示修改以后的sql语句
+      sql-show: true
